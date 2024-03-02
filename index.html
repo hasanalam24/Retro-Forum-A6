@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ultra-Player</title>
+
+    <!-- daisy -->
+    <link href="https://cdn.jsdelivr.net/npm/daisyui@4.7.2/dist/full.min.css" rel="stylesheet" type="text/css" />
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- font awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+        integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+
+    <!-- css style -->
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Mulish:ital,wght@0,200..1000;1,200..1000&display=swap');
+
+        .mulish-font {
+            font-family: "Mulish", sans-serif;
+        }
+
+        .banner-image {
+            background-image: url(images/bg-banner.png);
+        }
+    </style>
+</head>
+
+<body class="font-[mulish-font]">
+    <header class="container mx-auto ">
+        <!-- banner section -->
+        <section class="bg-red-500">
+            <div>
+
+            </div>
+
+            <div class="flex items-center justify-between gap-2 p-16 ">
+
+                <div>
+                    <h1 class="text-5xl text-white font-bold ">Welcome to the <br><span
+                            class="text-[#12132D]">UltraPlayer</span>
+                        Forum</h1>
+                    <p class="py-6 text-white">Listen to millions of songs, watch music videos, and experience live
+                        performances all <br> on Apple Music. Play on web, in app, or on Android with your browser
+                    </p>
+
+                    <div>
+
+                        <label class="input  flex  items-center gap-2 rounded-full">
+                            <input type="text" class="grow rounded-full" placeholder="Search here anything" />
+                            <span class="btn text-white bg-[#797DFC] rounded-full">Search</span>
+                        </label>
+
+                    </div>
+
+                </div>
+
+                <div class="bg-white p-4 rounded-xl w-[200px] font-medium text-lg">
+                    <p class="flex justify-between">Registered Users <span>01</span></p>
+                    <p class="flex justify-between">Forum <span>05</span></p>
+                    <p class="flex justify-between">Topics <span>02</span></p>
+                    <p class="flex justify-between">Replies <span>07</span></p>
+                </div>
+            </div>
+
+
+
+
+        </section>
+    </header>
+
+    <main class="container mx-auto">
+
+        <section>
+            <div class="text-center mt-8 space-y-5">
+                <h1 class="text-4xl font-semibold">Let’s Discuss</h1>
+                <p>Find the latest published documents for music player, Related hot topics, top authors, <br> the most
+                    cited
+                    documents, and related journals</p>
+            </div>
+
+            <div class="flex gap-10 items-center justify-between">
+                <!-- card left side -->
+                <div class="space-y-3 w-[60%]">
+
+                    <div class="flex">
+                        <div class="flex gap-5">
+                            <div class="indicator">
+                                <span class="indicator-item badge badge-secondary"></span>
+                                <div class="grid w-12 h-12 bg-base-300 place-items-center">content</div>
+                            </div>
+                            <div>
+                                <div class="flex gap-5">
+                                    <p># <span id="music-category">Music</span></p>
+                                    <p>Author: <span id="author-name">Awlad</span></p>
+                                </div>
+                                <div>
+                                    <h4 id="music-title" class="text-xl font-medium">10 Kids Unaware of Their Halloween
+                                        Costume</h4>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <p id="music-description" class="ml-[70px]">It’s one thing to subject yourself to ha Halloween
+                        costume mishap because, hey
+                        that’s
+                        your
+                        prerogative</p>
+
+                    <div class="border border-dashed "></div>
+
+                    <div class="flex justify-between items-center">
+
+                        <div class="flex gap-5 items-center">
+                            <div class="flex items-center gap-2">
+                                <i class="fa-regular fa-message"> </i>
+                                <span id="comments">560</span>
+                            </div>
+                            <div class="flex items-center gap-2">
+                                <i class="fa-regular fa-eye"></i>
+                                <span id="views">1550</span>
+                            </div>
+                            <div class="flex items-center gap-2">
+                                <i class="fa-regular fa-clock"></i>
+                                <span id="time">5 mins</span>
+                            </div>
+                        </div>
+
+                        <div class="text-[#10B981]">
+                            <i class="fa-solid fa-envelope-open-text"></i>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- card right side -->
+                <div id="title-add-container">
+                    <div class="flex justify-between gap-40 items-center">
+                        <h4 class="text-xl font-semibold">Title</h4>
+                        <div class="flex gap-2 items-center">
+                            <i class="fa-solid fa-check"></i>
+                            <p> Mark as read <span id="mark-read-count">0</span>
+                            </p>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+
+        <section class="mt-10">
+            <div class="hero bg-[#12132D] text-white rounded-2xl">
+                <div class="hero-content flex-col lg:flex-row-reverse gap-10">
+                    <img src="images/joinforum.png" class="max-w-sm rounded-lg shadow-2xl" />
+                    <div>
+                        <h1 class="text-5xl font-bold">Join Our Forum</h1>
+                        <p class="py-6">Whether you organize a music competition or a music festival, use our free Music
+                            Competition Application Form to <br> collect information from your applicants online</p>
+                        <button class="btn text-white bg-[#797DFC] rounded-full border-none ">Registered
+                            Now</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!--Latest Post -->
+
+
+    </main>
+
+    <footer>
+
+    </footer>
+
+
+    <script src="app.js"></script>
+</body>
+
+</html>
