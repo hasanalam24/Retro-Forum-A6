@@ -1,16 +1,28 @@
+const loadingSpinner = document.getElementById('loading-Spinner')
+const loadingSpinner2 = document.getElementById('loading-Spinner2')
+
+const latestCardSpinner = document.getElementById('latest-Container')
+
+
+setTimeout(() => {
+    loadingSpinner.classList.add('hidden')
+    loadData('Comedy')
+    latestCardSpinner.classList.remove('hidden')
+    loadingSpinner2.classList.add('hidden')
+}, 2000)
+
+
 const loadData = async (category) => {
+
     const res = await fetch(`https://openapi.programming-hero.com/api/retro-forum/posts?category=${category}`);
     const data = await res.json();
     // console.log(data.posts)
     const posts = data.posts;
 
     const leftCardContainer = document.getElementById('left-card-container')
-
     leftCardContainer.textContent = '';
 
     posts.forEach(post => {
-
-        // console.log(post)
 
         let isActive = '';
         if (post.isActive) {
@@ -78,27 +90,15 @@ const loadData = async (category) => {
 
 }
 
-// const addBtn = document.getElementById('addC');
-// addBtn.addEventListener('click', function () {
-//     console.log('pasisi')
-// })
-
-
 let total = 1
 const markClick = () => {
-
     const readCount = document.getElementById('mark-read-count')
     const Count = readCount.innerText;
     const convertCount = parseInt(Count)
     console.log(convertCount)
     readCount.innerText = total + convertCount;
 
-
     const titleContainer = document.getElementById('title-container')
-
-
-
-
     const div = document.createElement('div')
 
     div.innerHTML = `
@@ -113,7 +113,6 @@ const markClick = () => {
         `
     titleContainer.appendChild(div)
 
-
 }
 
 const searchBtn = () => {
@@ -127,8 +126,6 @@ const latestPost = async () => {
     const data = await res.json();
     const allData = data;
     // console.log(allData)
-
-
     const latestContainer = document.getElementById('latest-Container')
 
     allData.forEach((singleData) => {
@@ -166,4 +163,3 @@ const latestPost = async () => {
 }
 
 latestPost()
-loadData('Comedy')
