@@ -31,10 +31,10 @@
 </head>
 
 <body class="font-[mulish-font]">
-    <header class="container mx-auto ">
+    <header class="container mx-auto">
 
         <!-- navbar -->
-        <div>
+        <div class=" mt-2">
             <div class="navbar bg-base-100">
                 <div class="navbar-start">
                     <div class="dropdown">
@@ -49,8 +49,9 @@
 
                         <ul tabindex="0"
                             class="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52">
-                            <li><a>Homepage</a></li>
-                            <li><a>Portfolio</a></li>
+                            <li><a>Home</a></li>
+                            <li><a>Guidline</a></li>
+                            <li><a>Users</a></li>
                             <li><a>About</a></li>
                         </ul>
                     </div>
@@ -62,10 +63,19 @@
 
                 <div class="navbar-end">
                     <nav class="space-x-3 hidden lg:block">
-                        <i class="fa-solid fa-house"></i>
-                        <i class="fa-solid fa-pen"></i>
-                        <i class="fa-solid fa-user-plus"></i>
-                        <i class="fa-regular fa-flag"></i>
+                        <div class="tooltip bg-gray-300 p-2 rounded-xl" data-tip="Home">
+                            <i class="fa-solid fa-house"></i>
+                        </div>
+                        <div class="tooltip bg-gray-300 p-2 rounded-xl" data-tip="Guidline">
+                            <i class="fa-solid fa-pen"></i>
+                        </div>
+                        <div class="tooltip bg-gray-300 p-2 rounded-xl" data-tip="Users">
+                            <i class="fa-solid fa-user-plus"></i>
+                        </div>
+                        <div class="tooltip bg-gray-300 p-2 rounded-xl" data-tip="About">
+                            <i class="fa-regular fa-flag"></i>
+                        </div>
+
                     </nav>
                     <button class="btn text-white bg-[#797DFC] rounded-full border-none ml-4">Sign In</button>
                 </div>
@@ -99,7 +109,7 @@
 
                 </div>
 
-                <div class="bg-white p-4 rounded-xl w-[200px] font-medium text-lg">
+                <div class="bg-white p-4 rounded-xl w-[200px] font-medium text-lg space-y-4">
                     <p class="flex justify-between">Registered Users <span>01</span></p>
                     <p class="flex justify-between">Forum <span>05</span></p>
                     <p class="flex justify-between">Topics <span>02</span></p>
@@ -122,56 +132,59 @@
 
             <div class="flex gap-10  justify-between">
                 <!-- card left side -->
-                <div class="space-y-3 w-[60%] bg-[#ecebeb] p-8 rounded-xl mt-5">
+                <div id="left-card-container">
+                    <!-- <div class="space-y-3 w-[60%] bg-[#ecebeb] p-8 rounded-xl mt-5">
 
-                    <div class="flex">
-                        <div class="flex gap-5">
-                            <div class="indicator">
-                                <span class="indicator-item badge badge-secondary"></span>
-                                <div class="grid w-12 h-12 bg-base-300 place-items-center">content</div>
-                            </div>
-                            <div>
-                                <div class="flex gap-5">
-                                    <p># <span id="music-category">Music</span></p>
-                                    <p>Author: <span id="author-name">Awlad</span></p>
+                        <div class="flex">
+                            <div class="flex gap-5">
+                                <div class="indicator">
+                                    <span class="indicator-item badge badge-secondary"></span>
+                                    <div class="grid w-12 h-12 bg-base-300 place-items-center">content</div>
                                 </div>
                                 <div>
-                                    <h4 id="music-title" class="text-xl font-medium">10 Kids Unaware of Their Halloween
-                                        Costume</h4>
+                                    <div class="flex gap-5">
+                                        <p># <span id="music-category">Music</span></p>
+                                        <p>Author: <span id="author-name">Awlad</span></p>
+                                    </div>
+                                    <div>
+                                        <h4 id="music-title" class="text-xl font-medium">10 Kids Unaware of Their
+                                            Halloween
+                                            Costume</h4>
 
+                                    </div>
                                 </div>
                             </div>
                         </div>
-                    </div>
-                    <p id="music-description" class="ml-[70px]">It’s one thing to subject yourself to ha Halloween
-                        costume mishap because, hey
-                        that’s
-                        your
-                        prerogative</p>
+                        <p id="music-description" class="ml-[70px]">It’s one thing to subject yourself to ha Halloween
+                            costume mishap because, hey
+                            that’s
+                            your
+                            prerogative</p>
 
-                    <div class="border border-dashed "></div>
+                        <div class="border border-dashed "></div>
 
-                    <div class="flex justify-between items-center">
+                        <div class="flex justify-between items-center">
 
-                        <div class="flex gap-5 items-center">
-                            <div class="flex items-center gap-2">
-                                <i class="fa-regular fa-message"> </i>
-                                <span id="comments">560</span>
+                            <div class="flex gap-5 items-center">
+                                <div class="flex items-center gap-2">
+                                    <i class="fa-regular fa-message"> </i>
+                                    <span id="comments">560</span>
+                                </div>
+                                <div class="flex items-center gap-2">
+                                    <i class="fa-regular fa-eye"></i>
+                                    <span id="views">1550</span>
+                                </div>
+                                <div class="flex items-center gap-2">
+                                    <i class="fa-regular fa-clock"></i>
+                                    <span id="time">5 mins</span>
+                                </div>
                             </div>
-                            <div class="flex items-center gap-2">
-                                <i class="fa-regular fa-eye"></i>
-                                <span id="views">1550</span>
-                            </div>
-                            <div class="flex items-center gap-2">
-                                <i class="fa-regular fa-clock"></i>
-                                <span id="time">5 mins</span>
+
+                            <div class="text-[#10B981]">
+                                <i class="fa-solid fa-envelope-open-text"></i>
                             </div>
                         </div>
-
-                        <div class="text-[#10B981]">
-                            <i class="fa-solid fa-envelope-open-text"></i>
-                        </div>
-                    </div>
+                    </div> -->
                 </div>
 
                 <!-- card right side -->
