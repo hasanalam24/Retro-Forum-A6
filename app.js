@@ -113,4 +113,46 @@ const searchBtn = () => {
     // console.log(inputField)
 }
 
+const latestPost = async () => {
+    const res = await fetch('https://openapi.programming-hero.com/api/retro-forum/latest-posts');
+    const data = await res.json();
+    const allData = data;
+    // console.log(allData)
+
+
+    const latestContainer = document.getElementById('latest-Container')
+
+    allData.forEach((singleData) => {
+        // console.log(single)
+        const div = document.createElement('div')
+
+        div.innerHTML = `
+        
+        <div class="card w-96 p-4 bg-base-100 shadow-xl space-y-5">
+                    <figure><img src="${singleData.cover_image}"
+                            alt="Shoes" />
+                    </figure>
+                    <div class="space-y-3">
+                        <div class="flex gap-2 items-center">
+                            <i class="fa-solid fa-calendar-days"></i>
+                            <p>${singleData.author.posted_date}</p>
+                        </div>
+                        <h2 class="card-title">${singleData.title}</h2>
+                        <p>${singleData.description}</p>
+                        <div class="flex gap-5 items-center">
+                            <i class="fa-solid fa-user"></i>
+                            <div>
+                                <h5 class="text-lg">${singleData.author.name}</h5>
+                                <p>${singleData.author.designation}</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+        `
+
+        latestContainer.appendChild(div)
+    })
+}
+
+latestPost()
 loadData('Comedy')
