@@ -134,7 +134,7 @@ const latestPost = async () => {
 
         div.innerHTML = `
         
-        <div class="card w-96 p-4 bg-base-100 shadow-xl space-y-5">
+        <div class="card p-4 bg-base-100 shadow-xl space-y-5">
                     <figure><img src="${singleData.cover_image}"
                             alt="Shoes" />
                     </figure>
