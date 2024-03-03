@@ -1,12 +1,15 @@
-const loadData = async () => {
-    const res = await fetch('https://openapi.programming-hero.com/api/retro-forum/posts');
+const loadData = async (category) => {
+    const res = await fetch(`https://openapi.programming-hero.com/api/retro-forum/posts?category=${category}`);
     const data = await res.json();
     // console.log(data.posts)
     const posts = data.posts;
 
     const leftCardContainer = document.getElementById('left-card-container')
+
+    leftCardContainer.textContent = '';
+
     posts.forEach(post => {
-        console.log(post)
+        // console.log(post)
 
         const div = document.createElement('div')
 
@@ -16,8 +19,8 @@ const loadData = async () => {
                     <div class="flex">
                         <div class="flex gap-5">
                             <div class="indicator">
-                                <span class="indicator-item badge badge-secondary"></span>
-                                <div class="grid w-12 h-12 bg-base-300 place-items-center">content</div>
+                                <span class="bg-green-500 border-none indicator-item badge badge-secondary"></span>
+                                <div class="grid w-12 h-12 bg-base-300 place-items-center "><img class="rounded-xl" src="${post.image}" alt=""></div>
                             </div>
                             <div>
                                 <div class="flex gap-5">
@@ -33,7 +36,7 @@ const loadData = async () => {
                     </div>
                     <p id="music-description" class="ml-[70px]">${post.description}</p>
 
-                    <div class="border border-dashed "></div>
+                    <div class="opacity-70	 bg-black border border-dashed "></div>
 
                     <div class="flex justify-between items-center">
 
@@ -53,7 +56,7 @@ const loadData = async () => {
                         </div>
 
                         <div class="text-[#10B981]">
-                            <i class="fa-solid fa-envelope-open-text"></i>
+                            <i onclick="markClick()" class="fa-solid fa-envelope-open-text"></i>
                         </div>
                     </div>
                 </div>
@@ -61,7 +64,53 @@ const loadData = async () => {
         `
         leftCardContainer.appendChild(div)
 
+
     });
 
+
 }
-loadData()
+
+
+let total = 1
+const markClick = async () => {
+    const readCount = document.getElementById('mark-read-count')
+    const Count = readCount.innerText;
+    const convertCount = parseInt(Count)
+    console.log(convertCount)
+    readCount.innerText = total + convertCount;
+
+
+    const res = await fetch('https://openapi.programming-hero.com/api/retro-forum/posts');
+    const data = await res.json();
+    // console.log(data.posts)
+    const posts = data.posts;
+
+    const titleContainer = document.getElementById('title-container')
+
+
+    posts.forEach((post) => {
+        // console.log(post)
+        const div = document.createElement('div')
+
+        div.innerHTML = `
+        <div class="p-4 rounded-xl bg-[#ecebeb] flex justify-between gap-14 mt-5">
+        <h3 class="text-lg">${post.title}</h3>
+        <div class="flex items-center gap-2">
+            <i class="fa-regular fa-eye opacity-90"></i>
+            <span id="views">${post.view_count}</span>
+        </div>
+    </div>
+
+        `
+        titleContainer.appendChild(div)
+    })
+
+}
+
+const searchBtn = () => {
+    const inputField = document.getElementById('input-field').value;
+    loadData(inputField)
+    // console.log(inputField)
+}
+
+loadData('Comedy')

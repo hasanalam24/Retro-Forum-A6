@@ -101,8 +101,9 @@
                     <div>
 
                         <label class="input  flex  items-center gap-2 rounded-full">
-                            <input type="text" class="grow rounded-full" placeholder="Search here anything" />
-                            <span class="btn text-white bg-[#797DFC] rounded-full">Search</span>
+                            <input id="input-field" type="text" class="grow rounded-full"
+                                placeholder="Search here anything" />
+                            <span onclick="searchBtn()" class="btn text-white bg-[#797DFC] rounded-full">Search</span>
                         </label>
 
                     </div>
@@ -132,8 +133,8 @@
 
             <div class="flex gap-10  justify-between">
                 <!-- card left side -->
-                <div id="left-card-container">
-                    <!-- <div class="space-y-3 w-[60%] bg-[#ecebeb] p-8 rounded-xl mt-5">
+                <div id="left-card-container" class="w-[60%]">
+                    <!-- <div class="space-y-3 w- bg-[#ecebeb] p-8 rounded-xl mt-5">
 
                         <div class="flex">
                             <div class="flex gap-5">
@@ -161,7 +162,7 @@
                             your
                             prerogative</p>
 
-                        <div class="border border-dashed "></div>
+                        <div class="border border-dashed border-2 "></div>
 
                         <div class="flex justify-between items-center">
 
@@ -188,14 +189,27 @@
                 </div>
 
                 <!-- card right side -->
-                <div id="title-add-container" class="bg-[#ecebeb] p-8 rounded-xl mt-5">
+                <div id="title-add-container" class="rounded-xl mt-5">
                     <div class="flex justify-between gap-40 items-center">
                         <h4 class="text-xl font-semibold">Title</h4>
-                        <div class="flex gap-2 items-center">
-                            <i class="fa-solid fa-check"></i>
-                            <p> Mark as read <span id="mark-read-count">0</span>
-                            </p>
-                        </div>
+
+
+                        <p class="text-lg"> Mark as read (<span id="mark-read-count">0</span>
+                            )</p>
+
+
+                    </div>
+                    <div id="title-container">
+
+
+                        <!-- <div class="p-4 rounded-xl bg-[#ecebeb] flex justify-between gap-14 mt-5">
+                            <h3 class="text-lg">10 Kids Unaware of Their Costume</h3>
+                            <div class="flex items-center gap-2">
+                                <i class="fa-regular fa-eye opacity-90"></i>
+                                <span id="views">1550</span>
+                            </div>
+                        </div> -->
+
                     </div>
 
                 </div>
