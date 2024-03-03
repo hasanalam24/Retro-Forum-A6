@@ -9,7 +9,16 @@ const loadData = async (category) => {
     leftCardContainer.textContent = '';
 
     posts.forEach(post => {
+
         // console.log(post)
+
+        let isActive = '';
+        if (post.isActive) {
+            isActive = `<span id="indicator" class="bg-green-500 border-none indicator-item badge badge-secondary"></span>`
+        }
+        else if (!post.isActive) {
+            isActive = `<span id="indicator" class="bg-red-500 border-none indicator-item badge badge-secondary"></span>`
+        }
 
         const div = document.createElement('div')
 
@@ -19,7 +28,7 @@ const loadData = async (category) => {
                     <div class="flex">
                         <div class="flex gap-5">
                             <div class="indicator">
-                                <span class="bg-green-500 border-none indicator-item badge badge-secondary"></span>
+                            ${isActive}
                                 <div class="grid w-12 h-12 bg-base-300 place-items-center "><img class="rounded-xl" src="${post.image}" alt=""></div>
                             </div>
                             <div>
@@ -64,15 +73,20 @@ const loadData = async (category) => {
         `
         leftCardContainer.appendChild(div)
 
-
     });
 
 
 }
 
+// const addBtn = document.getElementById('addC');
+// addBtn.addEventListener('click', function () {
+//     console.log('pasisi')
+// })
+
 
 let total = 1
-const markClick = async () => {
+const markClick = () => {
+
     const readCount = document.getElementById('mark-read-count')
     const Count = readCount.innerText;
     const convertCount = parseInt(Count)
@@ -80,30 +94,25 @@ const markClick = async () => {
     readCount.innerText = total + convertCount;
 
 
-    const res = await fetch('https://openapi.programming-hero.com/api/retro-forum/posts');
-    const data = await res.json();
-    // console.log(data.posts)
-    const posts = data.posts;
-
     const titleContainer = document.getElementById('title-container')
 
 
-    posts.forEach((post) => {
-        // console.log(post)
-        const div = document.createElement('div')
 
-        div.innerHTML = `
+
+    const div = document.createElement('div')
+
+    div.innerHTML = `
         <div class="p-4 rounded-xl bg-[#ecebeb] flex justify-between gap-14 mt-5">
-        <h3 class="text-lg">${post.title}</h3>
+        <h3 class="text-lg"></h3>
         <div class="flex items-center gap-2">
             <i class="fa-regular fa-eye opacity-90"></i>
-            <span id="views">${post.view_count}</span>
+            <span id="views"></span>
         </div>
     </div>
 
         `
-        titleContainer.appendChild(div)
-    })
+    titleContainer.appendChild(div)
+
 
 }
 
