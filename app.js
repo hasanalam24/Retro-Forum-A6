@@ -135,15 +135,17 @@ const latestPost = async () => {
                     <div class="space-y-3">
                         <div class="flex gap-2 items-center">
                             <i class="fa-solid fa-calendar-days"></i>
-                            <p>${singleData.author.posted_date}</p>
+                            <p>${singleData.author.posted_date ? singleData.author.posted_date : "No Published Date"}</p>
                         </div>
                         <h2 class="card-title">${singleData.title}</h2>
                         <p>${singleData.description}</p>
                         <div class="flex gap-5 items-center">
-                            <i class="fa-solid fa-user"></i>
+                            <div class="w-[45px] h-[45px] ">
+                            <img class="rounded-full" src="${singleData.profile_image}" alt="">
+                            </div>
                             <div>
                                 <h5 class="text-lg">${singleData.author.name}</h5>
-                                <p>${singleData.author.designation}</p>
+                                <p>${singleData.author.designation ? singleData.author.designation : "Unknown"}</p>
                             </div>
                         </div>
                     </div>
