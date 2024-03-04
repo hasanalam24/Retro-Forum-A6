@@ -5,7 +5,6 @@ const loadData = async (category) => {
     const data = await res.json();
     // console.log(data.posts)
     const posts = data.posts;
-
     const leftCardContainer = document.getElementById('left-card-container')
     leftCardContainer.textContent = '';
 
@@ -63,7 +62,7 @@ const loadData = async (category) => {
                             </div>
                         </div>
 
-                        <div id="clickBtn" onclick="markClick('${post.title}','${post.view_count}')" class="text-[#10B981]">
+                        <div id="clickBtn" onclick="markClick('${post.title.replace("'", "")}','${post.view_count}')" class="text-[#10B981]">
                             <i class="fa-solid fa-envelope-open-text"></i>
                         </div>
                     </div>
@@ -104,8 +103,14 @@ const markClick = (title, view_count) => {
 
 const searchBtn = () => {
     const inputField = document.getElementById('input-field').value;
-    loadData(inputField)
-    // console.log(inputField)
+
+    if (inputField) {
+        loadData(inputField)
+    }
+    else {
+        const leftCardContainer = document.getElementById('left-card-container')
+        leftCardContainer.innerText = "Opps!!! No Data Found";
+    }
 }
 
 const latestPost = async () => {
@@ -149,7 +154,9 @@ const latestPost = async () => {
     })
 }
 
+
 latestPost()
+
 
 const loadingSpinner = document.getElementById('loading-Spinner')
 const loadingSpinner2 = document.getElementById('loading-Spinner2')
@@ -158,7 +165,7 @@ const latestCardSpinner = document.getElementById('latest-Container')
 
 setTimeout(() => {
     loadingSpinner.classList.add('hidden')
-    loadData('comedy')
+    loadData('')
     latestCardSpinner.classList.remove('hidden')
     loadingSpinner2.classList.add('hidden')
 }, 2000)
