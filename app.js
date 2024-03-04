@@ -1,5 +1,4 @@
 
-
 const loadData = async (category) => {
 
     const res = await fetch(`https://openapi.programming-hero.com/api/retro-forum/posts?category=${category}`);
@@ -64,7 +63,7 @@ const loadData = async (category) => {
                             </div>
                         </div>
 
-                        <div id="clickBtn" onclick="markClick()" class="text-[#10B981]">
+                        <div id="clickBtn" onclick="markClick('${post.title}','${post.view_count}')" class="text-[#10B981]">
                             <i class="fa-solid fa-envelope-open-text"></i>
                         </div>
                     </div>
@@ -75,56 +74,31 @@ const loadData = async (category) => {
 
 
     });
-    // leftCardContainer.appendChild(div)
 
 }
 
 
 let total = 1
-
-
-
-
-const markClick = async () => {
-    // console.log(postOne)
-
+const markClick = (title, view_count) => {
     const readCount = document.getElementById('mark-read-count')
     const Count = readCount.innerText;
     const convertCount = parseInt(Count)
-    // console.log(convertCount)
     readCount.innerText = total + convertCount;
 
-
-    const res = await fetch('https://openapi.programming-hero.com/api/retro-forum/posts');
-    const data = await res.json();
-    const posts = data.posts
-    // console.log(posts)
-
     const titleContainer = document.getElementById('title-container')
+    const div = document.createElement('div')
 
-    posts.forEach((item) => {
-
-        console.log(item)
-
-        const div = document.createElement('div')
-
-        div.innerHTML = `
+    div.innerHTML = `
         <div class="p-4 rounded-xl bg-[#ecebeb] flex justify-between gap-14 mt-5">
-            <h3 class="text-lg">${item.title}</h3>
+            <h3 class="text-lg">${title}</h3>
             <div class="flex items-center gap-2">
                 <i class="fa-regular fa-eye opacity-90"></i>
-                <span id="views">${item.view_count}</span>
+                <span id="views">${view_count}</span>
             </div>
         </div>
-    
+
             `
-        titleContainer.appendChild(div)
-
-
-    })
-
-
-
+    titleContainer.appendChild(div)
 
 }
 
@@ -181,7 +155,6 @@ const loadingSpinner = document.getElementById('loading-Spinner')
 const loadingSpinner2 = document.getElementById('loading-Spinner2')
 
 const latestCardSpinner = document.getElementById('latest-Container')
-
 
 setTimeout(() => {
     loadingSpinner.classList.add('hidden')
