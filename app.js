@@ -1,15 +1,3 @@
-const loadingSpinner = document.getElementById('loading-Spinner')
-const loadingSpinner2 = document.getElementById('loading-Spinner2')
-
-const latestCardSpinner = document.getElementById('latest-Container')
-
-
-setTimeout(() => {
-    loadingSpinner.classList.add('hidden')
-    loadData('Comedy')
-    latestCardSpinner.classList.remove('hidden')
-    loadingSpinner2.classList.add('hidden')
-}, 2000)
 
 
 const loadData = async (category) => {
@@ -35,7 +23,7 @@ const loadData = async (category) => {
         const div = document.createElement('div')
 
         div.innerHTML = `
-        <div id="left-card-container" class="space-y-3 bg-[#ecebeb] p-8 rounded-xl mt-5">
+        <div class="space-y-3 bg-[#ecebeb] p-8 rounded-xl mt-5">
 
                     <div class="flex">
                         <div class="flex gap-5">
@@ -76,8 +64,8 @@ const loadData = async (category) => {
                             </div>
                         </div>
 
-                        <div class="text-[#10B981]">
-                            <i onclick="markClick()" class="fa-solid fa-envelope-open-text"></i>
+                        <div id="clickBtn" onclick="markClick()" class="text-[#10B981]">
+                            <i class="fa-solid fa-envelope-open-text"></i>
                         </div>
                     </div>
                 </div>
@@ -85,33 +73,58 @@ const loadData = async (category) => {
         `
         leftCardContainer.appendChild(div)
 
-    });
 
+    });
+    // leftCardContainer.appendChild(div)
 
 }
 
+
 let total = 1
-const markClick = () => {
+
+
+
+
+const markClick = async () => {
+    // console.log(postOne)
+
     const readCount = document.getElementById('mark-read-count')
     const Count = readCount.innerText;
     const convertCount = parseInt(Count)
-    console.log(convertCount)
+    // console.log(convertCount)
     readCount.innerText = total + convertCount;
 
+
+    const res = await fetch('https://openapi.programming-hero.com/api/retro-forum/posts');
+    const data = await res.json();
+    const posts = data.posts
+    // console.log(posts)
+
     const titleContainer = document.getElementById('title-container')
-    const div = document.createElement('div')
 
-    div.innerHTML = `
+    posts.forEach((item) => {
+
+        console.log(item)
+
+        const div = document.createElement('div')
+
+        div.innerHTML = `
         <div class="p-4 rounded-xl bg-[#ecebeb] flex justify-between gap-14 mt-5">
-        <h3 class="text-lg"></h3>
-        <div class="flex items-center gap-2">
-            <i class="fa-regular fa-eye opacity-90"></i>
-            <span id="views"></span>
+            <h3 class="text-lg">${item.title}</h3>
+            <div class="flex items-center gap-2">
+                <i class="fa-regular fa-eye opacity-90"></i>
+                <span id="views">${item.view_count}</span>
+            </div>
         </div>
-    </div>
+    
+            `
+        titleContainer.appendChild(div)
 
-        `
-    titleContainer.appendChild(div)
+
+    })
+
+
+
 
 }
 
@@ -163,3 +176,17 @@ const latestPost = async () => {
 }
 
 latestPost()
+
+const loadingSpinner = document.getElementById('loading-Spinner')
+const loadingSpinner2 = document.getElementById('loading-Spinner2')
+
+const latestCardSpinner = document.getElementById('latest-Container')
+
+
+setTimeout(() => {
+    loadingSpinner.classList.add('hidden')
+    loadData('comedy')
+    latestCardSpinner.classList.remove('hidden')
+    loadingSpinner2.classList.add('hidden')
+}, 2000)
+
